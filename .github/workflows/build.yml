@@ -3,7 +3,7 @@ on:
   push:
     branches: [ main ]
 jobs:
-  build-service:
+  build-and-test-service:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,6 +15,9 @@ jobs:
 
       - name: Download
         run: go mod download
+
+      - name: Test
+        run: go test -v ./simple-golang.go
 
       - name: Build
         run: go build -v ./simple-golang.go
