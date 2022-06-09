@@ -8,7 +8,7 @@ WORKDIR /app
 COPY go.mod .
 RUN go mod download
 
-# Copy the code into the container
+# Copy the code into the builder
 COPY . .
 
 # Build the application
