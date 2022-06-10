@@ -41,4 +41,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: $DOCKER_USERNAME/$PROJECT:$BRANCH-$SHA
+          tags: $BRANCH-$SHA
