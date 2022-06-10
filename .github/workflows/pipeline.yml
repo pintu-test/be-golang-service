@@ -17,7 +17,7 @@ jobs:
         run: go test -v ./simple-golang.go
       - name: Build
         run: go build -v ./simple-golang.go
-  docker:
+  build-and-push-image:
     permissions:
       contents: read
       packages: write
