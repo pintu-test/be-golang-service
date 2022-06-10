@@ -30,8 +30,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: docker login
-        run: | # log into docker hub account
-        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD  
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - name: Build the Docker image # push The image to the docker hub
         run: docker build . --file Dockerfile --tag $DOCKER_USERNAME/$REPO_NAME:${{IMAGE_TAG}}
       - name: Docker Push
