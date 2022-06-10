@@ -3,9 +3,8 @@ on:
   push:
     branches: [ main ]
 env:
-  REGISTRY: hub.docker.com
-  IMAGE_NAME: be-golang    
-  PROJECT: be-golang-service
+  BRANCH: ${{ GITHUB.REF_NAME }}
+  ID: ${{ GITHUB.RUN_ID }}
 jobs:
   build-and-test-service:
     runs-on: ubuntu-latest
@@ -42,4 +41,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/be-golang-service:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.PROJECT }}:${{ env.BRANCH }}-${{ env.ID }}
