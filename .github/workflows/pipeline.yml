@@ -5,7 +5,7 @@ on:
 env:
   REGISTRY: hub.docker.com
   IMAGE_NAME: be-golang    
-  IMAGE_TAG: ${{ github.sha }}
+  IMAGE_TAG: ${{ github_hash }}
 jobs:
   build-and-test-service:
     runs-on: ubuntu-latest
@@ -32,6 +32,6 @@ jobs:
       - name: docker login
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - name: Build the Docker image # push The image to the docker hub
-        run: docker build . --file Dockerfile --tag $DOCKER_USERNAME/$REPO_NAME:${{IMAGE_TAG}}
+        run: docker build . --file Dockerfile --tag $DOCKER_USERNAME/$REPO_NAME:${{GIT_BRANCH}}-${{IMAGE_TAG}}
       - name: Docker Push
         run: docker push $DOCKER_USERNAME/$REPO_NAME:${{IMAGE_TAG}}
