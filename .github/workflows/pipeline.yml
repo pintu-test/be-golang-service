@@ -40,5 +40,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
+          build-args: NAME=${{ secrets.NAME }}
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.PROJECT }}:${{ env.BRANCH }}-${{ env.ID }}
